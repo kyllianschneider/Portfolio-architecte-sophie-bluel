@@ -14,6 +14,8 @@ fetch(serv+'api/works',{mode: 'cors'})
             caption.innerHTML = portfolio[el].title;
             image = document.createElement('img');
             image.src = portfolio[el].imageUrl;
+            image.crossorigin= "anonymous";
+            image.setAttribute( "crossorigin", "anonymous");
             obj = document.createElement('figure');
             obj.setAttribute("cat_id",portfolio[el].categoryId); // ajout de l'id de categorie comme atribu
             obj.appendChild(image);
@@ -30,7 +32,7 @@ fetch(serv+'api/categories',{mode: 'cors'})
 
     categories[-1] = {};
     categories[-1].id = 0;
-    categories[-1].name = "TOUS";
+    categories[-1].name = "Tous";
     console.log(categories);
 
     //création des divs pour les filtres
