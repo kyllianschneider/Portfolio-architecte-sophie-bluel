@@ -22,7 +22,6 @@
         <ul>
           <li>projets</li>
           <li>contact</li>
-          <li>login</li>
           <li><img src="./assets/icons/instagram.png" alt="Instagram" /></li>
         </ul>
       </nav>
@@ -31,19 +30,21 @@
       <h1>Log In</h1>
       <div class="email">
         <label for="E-mail"><b>E-mail</b></label>
-        <input type="text" name="email" required size="50" />
+        <input id="email" type="text" name="email" required size="50" />
       </div>
       <div class="password">
         <label for="password"><b>Mot de passe</b></label>
-        <input type="password" name="password" required size="50" />
+        <input id="password" type="password" name="password" required size="50" />
       </div>
 
-      <div class="connection">
-        <button type="submit">Se connecter</button>
+      <div class="connection" >
+        <button id="connection" type="submit">Se connecter</button>
       </div>
+
+      <div id="error_zone"></div>
 
       <div class="forget">
-        <a href="#">Mot de passe oublié</a>
+        <a href="#">Mot de passe oublié</>
       </div>
     </section>
     <footer>
@@ -54,4 +55,5 @@
       </nav>
     </footer>
   </body>
+  <script src="./assets/login.js"></script>
 </html>

@@ -1,5 +1,48 @@
 serv = "http://localhost:5678/";
 
+if (auth()) {
+     a = document.createElement("a");
+     a.href = "./index.html";
+     a.innerHTML = "logout";
+     a.addEventListener("click", function (e) {
+         deleteAllCookies();
+     });
+     document.getElementById("log_zone").appendChild(a);
+}else{
+    document.getElementById("log_zone").innerHTML = '<a href="./login.html">login</a>';
+}
+
+
+function auth(){
+    if (getCookie("token") != "") {
+        return true;
+    }
+    return false;
+}
+
+
+function getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0; i<ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1);
+        if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
+    }
+    return "";
+}
+
+
+function deleteAllCookies() {
+    var cookies = document.cookie.split(";");
+    for (var i = 0; i < cookies.length; i++) {
+    	var cookie = cookies[i];
+    	var eqPos = cookie.indexOf("=");
+    	var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+    	document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT;";
+    }
+}
+
 var cat = 0; // 0 = all /// catégorie actuelle
 var categories; // liste des catégories
 var portfolio; // liste des projets
@@ -33,7 +76,6 @@ fetch(serv + "api/categories", { mode: "cors" })
     categories[-1] = {};
     categories[-1].id = 0;
     categories[-1].name = "Tous";
-    console.log(categories);
 
     //création des divs pour les filtres
     for (i = -1; i < categories.length; i++) {
