@@ -133,7 +133,7 @@ body {
   margin: auto;
   font-family: "Work Sans";
   font-size: 14px;
-  background-color: #FFFEF8  ;
+  background-color: #fffef8;
 }
 header {
   display: flex;
@@ -249,6 +249,11 @@ li > a:hover {
 .gallery img {
   width: 100%;
 }
+
+h2{
+  margin-right: -112px;
+}
+
 #contact {
   width: 50%;
   margin: auto;
@@ -295,4 +300,110 @@ footer nav ul {
   display: flex;
   justify-content: flex-end;
   margin: 2em;
+}
+
+#popup-mask {
+  background: rgba(36, 36, 37, 0.6);
+}
+
+#mypopup {
+  background: #fffef8;
+  width: 500px;
+  top: 20%;
+  padding: 5px;
+  -moz-box-shadow: 0px 2px 9px #212d60;
+  -webkit-box-shadow: 0px 2px 9px #212d60;
+  box-shadow: 0px 2px 9px #212d60;
+  height: 600px;
+  border-radius: 15px;
+}
+
+#mypopup > :nth-child(1) {
+  float: right;
+  width: 50px;
+  height: 50px;
+  margin-right: -35px;
+  background-image: url("/Portfolio-architecte-sophie-bluel-master/FrontEnd/assets/icons/VectorclosePopUp.svg");
+  
+  background-repeat: no-repeat;
+}
+#mypopup > :nth-child(2) {
+  font-size: 2em;
+  text-align: center;
+  line-height: 50px;
+  margin-bottom: 50px;
+  margin-top: 30px;
+}
+
+#manager {
+  border-bottom: 1px solid #b3b3b3;
+  padding-bottom: 20px;
+  width: 77%;
+  margin: auto;
+}
+
+#manager figure div {
+  margin-left: -15px;
+  margin-top: 2px;
+  display: inline;
+  position: absolute;
+}
+#manager figure {
+  margin: 1px;
+}
+#mypopup figure img {
+  height: 100px;
+  display: inline;
+  width: 99%;
+}
+
+#mypopup figure {
+  display: inline-block;
+}
+
+#mypopup figcaption {
+  display: none;
+}
+
+#mypopup .supp {
+  display: inline-block;
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  background-image: url("/Portfolio-architecte-sophie-bluel-master/FrontEnd/assets/icons/trash-can-solid.svg");
+  background-repeat: no-repeat;
+}
+
+#modif_projet {
+  border: none;
+  background: none;
+  font-size: 16px;
+  margin-left: -10px;
+}
+.icon {
+  margin-left: 20px;
+  height: 16px;
+}
+
+.addPic {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+  background-color: #1d6154;
+  border-radius: 60px;
+  padding: 15px;
+  width: 40%;
+  margin-left: 140px;
+  color: white;
+  font-family: "Syne";
+  font-size: 14px;
+  font-weight: 700;
+}
+
+p {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15px;
+  color:#b1663c ;
 }
