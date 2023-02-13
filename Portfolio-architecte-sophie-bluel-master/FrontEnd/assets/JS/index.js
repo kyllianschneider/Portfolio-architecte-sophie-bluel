@@ -8,6 +8,10 @@ if (auth()) {
      gid("log_zone").appendChild(a);
      gid("modif_projet").hidden = false;
      gid("icon1").hidden = false;
+     gid("edit_mode").style.display = "flex";
+     gid("modif").style.display = "flex";
+     gid("projet").style.marginLeft = "0px";
+
 }else{
     gid("log_zone").innerHTML = '<a href="./login.html">login</a>';
 }
@@ -45,13 +49,12 @@ function create_figure_dom(elem_portfolio){
 }
 
 function supprimer_proj(id_proj){
-    console.log(id_proj);
+    //console.log(id_proj);
     fetch(serv + "api/works/"+id_proj,{
-        mode: "cors",
         method:"DELETE",
-        credentials: 'include',
         headers: {
-            'Content-Type': 'application/json;charset=utf-8'
+            'Content-Type': 'application/json;charset=utf-8',
+            Authorization : "Bearer " + getCookie("token"),
         }}
     )
     .then((r) => {
@@ -63,9 +66,8 @@ function supprimer_proj(id_proj){
         }else{
 
         }
-    });
-    // e.target.parentNode.style = "display: none;"; // cache temporairement le div
-}
+    });   
+};
 
 fetch(serv + "api/works", { mode: "cors" })
 .then((r) => r.json())
@@ -77,11 +79,13 @@ fetch(serv + "api/works", { mode: "cors" })
         gid("gallery").appendChild(create_figure_dom(portfolio[el]));
         temp = create_figure_dom(portfolio[el]);
         button = document.createElement("div");
+        button.style.backgroundImage = "url('./assets/icons/trash-can-solid.svg')";
         button.className = "supp";
         button.setAttribute("proj_id", portfolio[el].id);
         button.addEventListener("click", function (e) {
             supprimer_proj(e.target.getAttribute("proj_id"));
-            // supprimer_proj(15);
+            e.target.parentNode.style = "display: none;";
+            e.stopPropagation(); // cache temporairement le div
         });
         temp.appendChild(button);
         gid("manager").appendChild(temp); // figcaption masqué en css

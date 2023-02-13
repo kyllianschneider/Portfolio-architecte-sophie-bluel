@@ -21,8 +21,8 @@
   crossorigin="anonymous"></script>
   </head>
   <body>
-    <div class="edit_mode" hidden>
-      <img src="/Portfolio-architecte-sophie-bluel-master/FrontEnd/assets/icons/pen-to-square-solid.svg" alt="">
+    <div id="edit_mode" class="edit_mode"  >
+      <img src="./assets/icons/white-edit.svg" alt="">
       <p>Mode édition</p>
       <button>
         publier les changements
@@ -43,7 +43,9 @@
       <section id="introduction">
         <figure>
           <img src="./assets/images/sophie-bluel.png" alt="" />
+          <p id="modif" hidden><img class="modif_icon"src="./assets/icons/pen-to-square-solid.svg" hidden/>modifier</p>
         </figure>
+        
         <article>
           <h2>Designer d'espace</h2>
           <p>
@@ -66,7 +68,7 @@
       <i class="fa-light fa-pen-to-square"></i>
       <section id="categories"></section>
       <section id="portfolio">
-        <h2>Mes Projets
+        <h2 id="projet">Mes Projets
           <img class="icon" id="icon1" src="./assets/icons/pen-to-square-solid.svg" alt="modifier" hidden/>
           <input id="modif_projet" type="button" value="modifier" onclick="openpopup();" hidden>
         </h2>
@@ -97,8 +99,10 @@
 
 
     <div id="mypopup" hidden>
-        <div onclick="closepopup();"></div> 
-        <div class="">Galerie photo</div>
+        <div onclick="closepopup();">
+          <img src="./assets/icons/VectorclosePopUp.svg" alt="">
+        </div> 
+        <div>Galerie photo</div>
         <div id="manager"></div>
         <div class="addPic">Ajouter une photo</div>
         <p>Supprimer la galerie</p>
