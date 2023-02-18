@@ -136,7 +136,7 @@ body {
   background-color: #fffef8;
 }
 
-#edit_mode{
+#edit_mode {
   display: none;
   align-items: center;
   justify-content: center;
@@ -144,26 +144,26 @@ body {
   background-color: black;
 }
 #edit_mode p {
-color: white;
-margin: 15px;
+  color: white;
+  margin: 15px;
 }
 
-#edit_mode img{
-height : 20px;
-color: white;
-margin: 15px;
-margin-right: -5px;
-margin-left: 275px;
+#edit_mode img {
+  height: 20px;
+  color: white;
+  margin: 15px;
+  margin-right: -5px;
+  margin-left: 275px;
 }
-#edit_mode button{
+#edit_mode button {
   margin: 15px;
   margin-right: 250px;
- background: white;
- border-radius: 60px;
- border: none;
- padding: 10px;
- padding-left: 15px;
- padding-right: 15px;
+  background: white;
+  border-radius: 60px;
+  border: none;
+  padding: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
 }
 
 header {
@@ -230,12 +230,12 @@ li > a:hover {
   margin: auto;
   width: 80%;
 }
-.modif_icon{
+.modif_icon {
   float: left;
   height: 16px;
 }
 
-#modif{
+#modif {
   display: none;
   width: 10%;
   font-size: 16px;
@@ -243,7 +243,6 @@ li > a:hover {
   margin-left: 70px;
   color: black;
 }
-
 
 #introduction article {
   flex: 1;
@@ -352,7 +351,8 @@ footer nav ul {
   background: rgba(36, 36, 37, 0.6);
 }
 
-#mypopup {
+#mypopup,
+#mypopup2 {
   background: #fffef8;
   width: 500px;
   top: 20%;
@@ -434,7 +434,7 @@ footer nav ul {
   cursor: pointer;
 }
 
-.addPic {
+#addPic {
   display: flex;
   justify-content: center;
   margin-top: 30px;
@@ -443,7 +443,7 @@ footer nav ul {
   padding: 15px;
   width: 40%;
   margin-left: 140px;
-  color: white;
+  color: #fffef8;
   font-family: "Syne";
   font-size: 14px;
   font-weight: 700;
@@ -456,5 +456,100 @@ p {
   align-items: center;
   margin-top: 15px;
   color: #b1663c;
+  cursor: pointer;
+}
+
+.close {
+  float: right;
+  margin-right: 15px;
+  margin-top: 15px;
+  cursor: pointer;
+}
+
+.back {
+  float: left;
+  margin-left: 15px;
+  margin-top: 15px;
+  cursor: pointer;
+}
+
+h2 {
+  font-family: "Work Sans";
+  color: #18181a;
+  font-size: 2em;
+  line-height: 50px;
+  margin-top: 40px;
+  margin-left: 165px;
+}
+
+.addPic {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 40px;
+}
+
+.form {
+  margin-top: 40px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.Titre {
+  font-family: "Work Sans";
+  font-size: 1.2em;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  margin-top: 45px;
+}
+.Titre > input {
+  margin-top: 15px;
+  background: #ffffff;
+  box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+  border: white;
+  height: 45px;
+}
+.Catégorie {
+  font-family: "Work Sans";
+  font-size: 1.2em;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  margin-top: 25px;
+  border-bottom: #b3b3b3 1px solid;
+  padding-bottom: 40px;
+}
+.Catégorie > input {
+  margin-top: 15px;
+  background: #ffffff;
+  box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+  border: white;
+  height: 45px;
+}
+
+.validate {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+#validate {
+  font-family: "Syne";
+  font-weight: 700;
+  font-size: 14px;
+  color: white;
+  line-height: 17px;
+  background: #a7a7a7;
+  border-radius: 60px;
+  border: none;
+  padding: 10px;
+  padding-left: 80px;
+  padding-right: 80px;
   cursor: pointer;
 }

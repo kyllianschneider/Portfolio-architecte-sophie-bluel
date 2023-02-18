@@ -21,9 +21,22 @@ var categories; // liste des catégories
 var portfolio; // liste des projets
 
 mypop = new popup("mypopup");
+mypop2 = new popup("mypopup2");
+
+function nextpop(){ 
+    mypop.close();
+    mypop2.pop();
+}
+
+function back(){
+    mypop.pop();
+    mypop2.close();
+}
+
 
 document.getElementById('popup-mask').addEventListener("click", function (e) {
     mypop.close();
+    mypop2.close();
 });
 
 function closepopup(){
@@ -69,7 +82,7 @@ function supprimer_proj(id_proj){
     });   
 };
 
-fetch(serv + "api/works", { mode: "cors" })
+fetch(serv + "api/works", { mode: "cors"})
 .then((r) => r.json())
 .then((data) => {
     portfolio = data;

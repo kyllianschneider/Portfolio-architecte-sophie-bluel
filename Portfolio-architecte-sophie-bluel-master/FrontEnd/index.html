@@ -104,8 +104,41 @@
         </div> 
         <div>Galerie photo</div>
         <div id="manager"></div>
-        <div class="addPic">Ajouter une photo</div>
+        <div onclick="nextpop()" id="addPic">Ajouter une photo</div>
         <p>Supprimer la galerie</p>
+    </div>
+    <div id="mypopup2" hidden>
+      <div class="back" onclick="back();">
+        <img src="./assets/icons/BackArrow.svg" alt="">
+      </div>
+      <div class="close">
+        <img src="./assets/icons/VectorclosePopUp.svg" alt="">
+      </div>
+      <H2>Ajout photo</H2>
+      <div class="addPic">
+        <img src="" alt="">
+        <div class="Photo">
+          <label for="photo"><b>+ Ajouter photo</b></label>
+          <input id="photo" type="file" name="photo" />
+        </div>
+        <p>jpg, png : 4mo max</p>
+      </div>
+      <div class="form">
+        <div class="Titre">
+          <label for="Titre"><b>Titre</b></label>
+          <input id="Titre" type="text" name="email" required size="50" />
+        </div>
+        <div class="Catégorie">
+          <label for="Catégorie"><b>Catégorie</b></label>
+          <input id="Catégorie" type="text" name="password" required size="50" />
+        </div>
+      </div>
+      <div class="validate">
+        <button id="validate">
+          valider
+        </button>
+      </div>
+      
     </div>
 
   </body>
