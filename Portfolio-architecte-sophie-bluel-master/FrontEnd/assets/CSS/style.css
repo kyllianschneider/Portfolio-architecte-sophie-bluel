@@ -233,14 +233,16 @@ li > a:hover {
 .modif_icon {
   float: left;
   height: 16px;
+  margin-right: 5px;
 }
 
-#modif {
+#modif-button {
   display: none;
-  width: 10%;
+  width: 15%;
+  margin-left: 60px;
   font-size: 16px;
-  margin: 5px;
-  margin-left: 70px;
+}
+#modif-button > p {
   color: black;
 }
 
@@ -435,6 +437,7 @@ footer nav ul {
 }
 
 #addPic {
+  /*this one is the button to add photo on the first popup */
   display: flex;
   justify-content: center;
   margin-top: 30px;
@@ -459,6 +462,11 @@ p {
   cursor: pointer;
 }
 
+#mypopup2 {
+  height: 850px;
+  width: 750px;
+}
+
 .close {
   float: right;
   margin-right: 15px;
@@ -473,13 +481,16 @@ p {
   cursor: pointer;
 }
 
-h2 {
+#mypopup2 > h2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-family: "Work Sans";
   color: #18181a;
   font-size: 2em;
   line-height: 50px;
   margin-top: 40px;
-  margin-left: 165px;
+  margin-right: 0;
 }
 
 .addPic {
@@ -488,10 +499,43 @@ h2 {
   align-items: center;
   flex-direction: column;
   margin-top: 40px;
+  background-color: #e8f1f7;
+  height: 300px;
+  width: 80%;
+ 
+}
+
+.addPic > p {
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.addPic > img {
+  position: relative;
+  margin-bottom: 30px;
+  height: 90px;
+}
+
+.Photo {
+  height: 50px;
+}
+
+#upload-style {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #cbd6dc;
+  color: #306685;
+  padding: 13px;
+  font-family: sans-serif;
+  border-radius: 60px;
+  cursor: pointer;
+  padding-right: 40px;
+  padding-left: 40px;
 }
 
 .form {
-  margin-top: 40px;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -504,7 +548,7 @@ h2 {
   justify-content: center;
   align-items: flex-start;
   flex-direction: column;
-  margin-top: 45px;
+  margin-top: 30px;
 }
 .Titre > input {
   margin-top: 15px;
@@ -524,12 +568,13 @@ h2 {
   border-bottom: #b3b3b3 1px solid;
   padding-bottom: 40px;
 }
-.Catégorie > input {
+.Catégorie > select {
   margin-top: 15px;
   background: #ffffff;
   box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
   border: white;
   height: 45px;
+  width: 325px;
 }
 
 .validate {
@@ -552,4 +597,15 @@ h2 {
   padding-left: 80px;
   padding-right: 80px;
   cursor: pointer;
+}
+
+#validate:active {
+  background-color: #1d6154;
+}
+
+#blah {
+  height: 300px;
+  position: absolute;
+  top: 135px;
+  left: 35%;
 }

@@ -1,146 +1,159 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Sophie Bluel - Architecte d'intérieur</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap"
-      rel="stylesheet"
-    />
-    <meta name="description" content="" />
-    <link rel="stylesheet" href="./assets/CSS/style.css" />
-    <script src="https://kit.fontawesome.com/7d17636476.js" crossorigin="anonymous"></script>
-    <script src="./assets/JS/main.js"></script>
-    <script src="./assets/JS/popup.js"></script>
-    <script
-  src="https://code.jquery.com/jquery-3.6.3.min.js"
-  integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU="
-  crossorigin="anonymous"></script>
-  </head>
-  <body>
-    <div id="edit_mode" class="edit_mode"  >
-      <img src="./assets/icons/white-edit.svg" alt="">
-      <p>Mode édition</p>
-      <button>
-        publier les changements
-      </button>
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Sophie Bluel - Architecte d'intérieur</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap"
+    rel="stylesheet" />
+  <meta name="description" content="" />
+  <link rel="stylesheet" href="./assets/CSS/style.css" />
+  <script src="https://kit.fontawesome.com/7d17636476.js" crossorigin="anonymous"></script>
+  <script src="./assets/JS/main.js"></script>
+  <script src="./assets/JS/popup.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.3.min.js"
+    integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <div id="edit_mode" class="edit_mode">
+    <img src="./assets/icons/white-edit.svg" alt="">
+    <p>Mode édition</p>
+    <button>
+      publier les changements
+    </button>
+  </div>
+  <header>
+    <h1>Sophie Bluel <span>Architecte d'inteérieur</span></h1>
+    <nav>
+      <ul>
+        <li>projets</li>
+        <li>contact</li>
+        <li id="log_zone"></li>
+        <li><img src="./assets/icons/instagram.png" alt="Instagram" /></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <section id="introduction">
+      <figure>
+        <img src="./assets/images/sophie-bluel.png" alt="" />
+        <div id="modif-button">
+          <img class="modif_icon" src="./assets/icons/pen-to-square-solid.svg" />
+          <p> modifier</p>
+        </div>
+
+      </figure>
+
+      <article>
+        <h2>Designer d'espace</h2>
+        <p>
+          Je raconte votre histoire, je valorise vos idées. Je vous accompagne
+          de la conception à la livraison finale du chantier.
+        </p>
+        <p>
+          Chaque projet sera étudié en commun, de façon à mettre en valeur les
+          volumes, les matières et les couleurs dans le respect de l’esprit
+          des lieux, et le choix adapté des matériaux. Le suivi du chantier
+          sera assuré dans le souci du détail, le respect du planning et du
+          budget.
+        </p>
+        <p>
+          En cas de besoin, une équipe pluridisciplinaire peut-être constituée
+          : architecte DPLG, décorateur(trice)
+        </p>
+      </article>
+    </section>
+    <i class="fa-light fa-pen-to-square"></i>
+    <section id="categories"></section>
+    <section id="portfolio">
+      <h2 id="projet">Mes Projets
+        <img class="icon" id="icon1" src="./assets/icons/pen-to-square-solid.svg" alt="modifier" hidden />
+        <input id="modif_projet" type="button" value="modifier" onclick="openpopup();" hidden>
+      </h2>
+      <div class="gallery" id="gallery"></div>
+    </section>
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>Vous avez un projet ? Discutons-en !</p>
+      <form action="#" method="post">
+        <label for="name">Nom</label>
+        <input type="text" name="name" id="name" />
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" />
+        <label for="message">Message</label>
+        <textarea name="message" id="message" cols="30" rows="10"></textarea>
+        <input type="submit" value="Envoyer" />
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <nav>
+      <ul>
+        <li>Mentions Légales</li>
+      </ul>
+    </nav>
+  </footer>
+
+
+  <div id="mypopup" hidden>
+    <div onclick="closepopup();">
+      <img src="./assets/icons/VectorclosePopUp.svg" alt="">
     </div>
-    <header>
-      <h1>Sophie Bluel <span>Architecte d'inteérieur</span></h1>
-      <nav>
-        <ul>
-          <li>projets</li>
-          <li>contact</li>
-          <li id="log_zone"></li>
-          <li><img src="./assets/icons/instagram.png" alt="Instagram" /></li>
-        </ul>
-      </nav>
-    </header>
-    <main>
-      <section id="introduction">
-        <figure>
-          <img src="./assets/images/sophie-bluel.png" alt="" />
-          <p id="modif" hidden><img class="modif_icon"src="./assets/icons/pen-to-square-solid.svg" hidden/>modifier</p>
-        </figure>
-        
-        <article>
-          <h2>Designer d'espace</h2>
-          <p>
-            Je raconte votre histoire, je valorise vos idées. Je vous accompagne
-            de la conception à la livraison finale du chantier.
-          </p>
-          <p>
-            Chaque projet sera étudié en commun, de façon à mettre en valeur les
-            volumes, les matières et les couleurs dans le respect de l’esprit
-            des lieux, et le choix adapté des matériaux. Le suivi du chantier
-            sera assuré dans le souci du détail, le respect du planning et du
-            budget.
-          </p>
-          <p>
-            En cas de besoin, une équipe pluridisciplinaire peut-être constituée
-            : architecte DPLG, décorateur(trice)
-          </p>
-        </article>
-      </section>
-      <i class="fa-light fa-pen-to-square"></i>
-      <section id="categories"></section>
-      <section id="portfolio">
-        <h2 id="projet">Mes Projets
-          <img class="icon" id="icon1" src="./assets/icons/pen-to-square-solid.svg" alt="modifier" hidden/>
-          <input id="modif_projet" type="button" value="modifier" onclick="openpopup();" hidden>
-        </h2>
-        <div class="gallery" id="gallery"></div>
-      </section>
-      <section id="contact">
-        <h2>Contact</h2>
-        <p>Vous avez un projet ? Discutons-en !</p>
-        <form action="#" method="post">
-          <label for="name">Nom</label>
-          <input type="text" name="name" id="name" />
-          <label for="email">Email</label>
-          <input type="email" name="email" id="email" />
-          <label for="message">Message</label>
-          <textarea name="message" id="message" cols="30" rows="10"></textarea>
-          <input type="submit" value="Envoyer" />
-        </form>
-      </section>
-    </main>
-
-    <footer>
-      <nav>
-        <ul>
-          <li>Mentions Légales</li>
-        </ul>
-      </nav>
-    </footer>
+    <div>Galerie photo</div>
+    <div id="manager"></div>
+    <div onclick="nextpop()" id="addPic">Ajouter une photo</div>
+    <p>Supprimer la galerie</p>
+  </div>
 
 
-    <div id="mypopup" hidden>
-        <div onclick="closepopup();">
-          <img src="./assets/icons/VectorclosePopUp.svg" alt="">
-        </div> 
-        <div>Galerie photo</div>
-        <div id="manager"></div>
-        <div onclick="nextpop()" id="addPic">Ajouter une photo</div>
-        <p>Supprimer la galerie</p>
+
+  <div id="mypopup2" hidden>
+    <div class="back" onclick="back();">
+      <img src="./assets/icons/BackArrow.svg" alt="">
     </div>
-    <div id="mypopup2" hidden>
-      <div class="back" onclick="back();">
-        <img src="./assets/icons/BackArrow.svg" alt="">
-      </div>
-      <div class="close">
-        <img src="./assets/icons/VectorclosePopUp.svg" alt="">
-      </div>
-      <H2>Ajout photo</H2>
+    <div class="close" onclick="closepopup();">
+      <img src="./assets/icons/VectorclosePopUp.svg" alt="">
+    </div>
+    <H2>Ajout photo</H2>
+    <div class="form" id=" form">
       <div class="addPic">
-        <img src="" alt="">
+        <img src="./assets/icons/image-icon.svg" alt="">
         <div class="Photo">
-          <label for="photo"><b>+ Ajouter photo</b></label>
-          <input id="photo" type="file" name="photo" />
+          <input id="upload-button" type="file" name="photo" accept="image/jpeg, image/png" onchange="readURL(this);"
+            hidden />
+          <img id="blah" src="" alt="" />
+          <label for="upload-button" id="upload-style">+ Ajouter photo</label>
         </div>
         <p>jpg, png : 4mo max</p>
       </div>
-      <div class="form">
-        <div class="Titre">
-          <label for="Titre"><b>Titre</b></label>
-          <input id="Titre" type="text" name="email" required size="50" />
-        </div>
-        <div class="Catégorie">
-          <label for="Catégorie"><b>Catégorie</b></label>
-          <input id="Catégorie" type="text" name="password" required size="50" />
-        </div>
+
+      <div class="Titre">
+        <label for="Titre"><b>Titre</b></label>
+        <input id="Titre" type="text" name="Titre" required size="50" />
       </div>
-      <div class="validate">
-        <button id="validate">
-          valider
-        </button>
+      <div class="Catégorie">
+        <label for="Catégorie"><b>Catégorie</b></label>
+        <select name="cat" id="Catégorie">
+          <option value="Objets">Objets</option>
+          <option value="Appartements">Appartements</option>
+          <option value="Hotels & restaurants">Hotels & restaurants</option>
+        </select>
       </div>
-      
+    </div>
+    <div class="validate">
+      <button id="validate">
+        valider
+      </button>
     </div>
 
-  </body>
-  <script src="./assets/JS/index.js"></script>
+  </div>
+
+</body>
+<script src="./assets/JS/index.js"></script>
+
 </html>
