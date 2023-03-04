@@ -120,36 +120,33 @@
       <img src="./assets/icons/VectorclosePopUp.svg" alt="">
     </div>
     <H2>Ajout photo</H2>
-    <div class="form" id=" form">
-      <div class="addPic">
+    <form action="" class="workform" id="workform">
+      <div class="add-pic">
         <img src="./assets/icons/image-icon.svg" alt="">
-        <div class="Photo">
-          <input id="upload-button" type="file" name="photo" accept="image/jpeg, image/png" onchange="readURL(this);"
-            hidden />
+        <div class="photo">
+          <input id="image" type="file" name="image" accept="image/jpeg, image/png" onchange="readURL(this);" hidden />
           <img id="blah" src="" alt="" />
-          <label for="upload-button" id="upload-style">+ Ajouter photo</label>
+          <label for="image" id="upload-style">+ Ajouter photo</label>
         </div>
         <p>jpg, png : 4mo max</p>
       </div>
 
-      <div class="Titre">
-        <label for="Titre"><b>Titre</b></label>
-        <input id="Titre" type="text" name="Titre" required size="50" />
+      <div class="titre">
+        <label for="titre"><b>Titre</b></label>
+        <input id="titre" type="text" name="titre" required size="50" />
       </div>
-      <div class="Catégorie">
-        <label for="Catégorie"><b>Catégorie</b></label>
-        <select name="cat" id="Catégorie">
-          <option value="Objets">Objets</option>
-          <option value="Appartements">Appartements</option>
-          <option value="Hotels & restaurants">Hotels & restaurants</option>
+      <div class="categorie">
+        <label for="category"><b>Catégorie</b></label>
+        <select name="category" id="category">
+          <option value="1">Objets</option>
+          <option value="2">Appartements</option>
+          <option value="3">Hotels & restaurants</option>
         </select>
       </div>
-    </div>
-    <div class="validate">
-      <button id="validate">
-        valider
-      </button>
-    </div>
+      <div class="validate">
+        <input type="submit" value="Valider" id="validate" name="validate">
+      </div>
+    </form>
 
   </div>
 
