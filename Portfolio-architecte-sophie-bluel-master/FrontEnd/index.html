@@ -14,8 +14,7 @@
   <script src="https://kit.fontawesome.com/7d17636476.js" crossorigin="anonymous"></script>
   <script src="./assets/JS/main.js"></script>
   <script src="./assets/JS/popup.js"></script>
-  <script src="https://code.jquery.com/jquery-3.6.3.min.js"
-    integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+
 </head>
 
 <body>
@@ -68,7 +67,12 @@
       </article>
     </section>
     <i class="fa-light fa-pen-to-square"></i>
-    <section id="categories"></section>
+    <section id="categories">
+      <div id="0">Tous</div>
+      <div id="1">Objet</div>
+      <div id="2">Appartements</div>
+      <div id="3">hotels et restaurants</div>
+    </section>
     <section id="portfolio">
       <h2 id="projet">Mes Projets
         <img class="icon" id="icon1" src="./assets/icons/pen-to-square-solid.svg" alt="modifier" hidden />
@@ -125,7 +129,7 @@
         <img src="./assets/icons/image-icon.svg" alt="">
         <div class="photo">
           <input id="image" type="file" name="image" accept="image/jpeg, image/png" onchange="readURL(this);" hidden />
-          <img id="blah" src="" alt="" />
+          <img id="preview" src="" alt="" />
           <label for="image" id="upload-style">+ Ajouter photo</label>
         </div>
         <p>jpg, png : 4mo max</p>
