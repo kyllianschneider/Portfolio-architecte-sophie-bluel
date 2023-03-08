@@ -7,6 +7,8 @@ const hotelWork = new Set();
 const gallery = document.querySelector("#gallery");
 const manager = document.querySelector("#manager");
 
+console.log(manager);
+
 mypop = new popup("mypopup");
 mypop2 = new popup("mypopup2");
 
@@ -35,6 +37,7 @@ function openpopup() {
     mypop.pop();
 }
 
+//---- fetch pour supprimer les projets ----
 function supprimer_proj(id_proj) {
     //console.log(id_proj);
     fetch(serv + "api/works/" + id_proj, {
@@ -45,32 +48,20 @@ function supprimer_proj(id_proj) {
         },
     }).then((r) => {
         console.log(r);
-        if (r.status == 401) {
+        if (r.status == 204) {
+            for (var z = 0; z < gid("gallery").childNodes.length; z++) {
+                if (gid("gallery").childNodes[z].getAttribute("proj_id") == id_proj) {
+       // surpimer elemDom.childNodes[z]
+       gid("gallery").removeChild(gid("gallery").childNodes[z]) 
+    }
+    
+    }
+
         } else if (r.status == 404) {
         } else {
         }
     });
 }
-
-// portfolio = data;
-//affichage du portfolio
-// console.log(portfolio);
-// for (work in works) {
-// temp = displayImages(works);
-// button = document.createElement("div");
-// button.style.backgroundImage =
-//     "url('./assets/icons/trash-can-solid.svg')";
-// button.className = "supp";
-// button.setAttribute("proj_id", works.id);
-// button.addEventListener("click", function (e) {
-//     supprimer_proj(e.target.getAttribute("proj_id"));
-//     e.target.parentNode.style = "display: none;";
-//     e.stopPropagation(); // cache temporairement le div
-//     e.preventDefault();
-// });
-// temp.appendChild(button);
-// gid("manager").appendChild(temp); // figcaption masqué en css
-// }
 
 //--- Admin section ----
 function setAdminElement() {
@@ -118,6 +109,7 @@ async function initiateWorksSet() {
         allWork.add(work);
     });
     displayImages(allWork);
+    displayModal(allWork);
 }
 
 //---- Affichage Image -----
@@ -128,10 +120,38 @@ async function displayImages(works) {
         figure.dataset.cat = work.categoryId;
         figure.innerHTML = `<img src="${work.imageUrl}" alt="${work.title}" crossorigin="anonymous">
             <figcaption>${work.title}</figcaption>`;
-        imgFragment.appendChild(figure);
+            figure.setAttribute("proj_id", work.id);
+            imgFragment.appendChild(figure);
+
     }
     gallery.appendChild(imgFragment);
 }
+
+//---- affichage modale ----
+function displayModal(works) {
+    const modalFragment = document.createDocumentFragment();
+    for (const work of works) {
+        const figure = document.createElement("figure");
+        figure.dataset.cat = work.categoryId;
+        figure.innerHTML = `<img src="${work.imageUrl}" alt="${work.title}" crossorigin="anonymous">
+            <figcaption>${work.title}</figcaption>`;
+
+        button = document.createElement("div");
+        button.style.backgroundImage =
+            "url('./assets/icons/trash-can-solid.svg')";
+        button.className = "supp";
+        button.setAttribute("proj_id", work.id);
+        button.addEventListener("click", function (e) {
+            supprimer_proj(e.target.getAttribute("proj_id"));
+            e.target.parentNode.style = "display: none;";
+        });
+        figure.appendChild(button);
+        modalFragment.appendChild(figure);
+    }
+    manager.appendChild(modalFragment);
+}
+
+console.log(displayModal);
 
 //--- vider la gallery ------
 function clearGallery() {

@@ -366,6 +366,12 @@ footer nav ul {
     border-radius: 15px;
 }
 
+#mypopup{
+    top: 100px;
+    height: 750px;
+    width: 750px;
+}
+
 #mypopup > :nth-child(1) {
     float: right;
     width: 50px;
@@ -387,23 +393,23 @@ footer nav ul {
 #manager {
     border-bottom: 1px solid #b3b3b3;
     padding-bottom: 20px;
-    width: 77%;
+    width: 80%;
     margin: auto;
 }
 
-#manager figure div {
+/* #manager figure div {
     margin-left: -15px;
     margin-top: 2px;
     display: inline;
     position: absolute;
-}
+} */
 #manager figure {
-    margin: 1px;
+    margin: 5px;
 }
 #mypopup figure img {
-    height: 100px;
+    height: 145px;
     display: inline;
-    width: 99%;
+    width: 100%;
 }
 
 #mypopup figure {
@@ -415,10 +421,12 @@ footer nav ul {
 }
 
 #mypopup .supp {
-    display: inline-block;
+    position: absolute;
     cursor: pointer;
-    height: 15px;
+    margin-top: -142px;
+    margin-left: 90px;
     width: 15px;
+    height: 15px;
     background-image: url("http://localhost:5678/images/trash-can-solid.svg");
     background-repeat: no-repeat;
 }
@@ -436,16 +444,15 @@ footer nav ul {
     cursor: pointer;
 }
 
-#addPic {
+#add-pic {
     /*this one is the button to add photo on the first popup */
-    display: flex;
-    justify-content: center;
+    text-align: center;
     margin-top: 30px;
+    margin-left: 27%;
     background-color: #1d6154;
     border-radius: 60px;
     padding: 15px;
     width: 40%;
-    margin-left: 140px;
     color: #fffef8;
     font-family: "Syne";
     font-size: 14px;
@@ -453,10 +460,8 @@ footer nav ul {
     cursor: pointer;
 }
 
-p {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.add-pic-p {
+    margin-left: 40%;
     margin-top: 15px;
     color: #b1663c;
     cursor: pointer;
