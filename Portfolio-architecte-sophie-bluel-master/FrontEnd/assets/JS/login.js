@@ -13,7 +13,7 @@ gid("connection").addEventListener("click", function (e) {
     if (r.status == 401) {
       gid("error_zone").innerHTML = "Mot de passe incorrect";
     } else if (r.status == 404) {
-      gid("error_zone").innerHTML = "Utilisateur incorect";
+      gid("error_zone").innerHTML = "Utilisateur incorrect";
     } else {
       r.json().then((data) => {
         //deleteAllCookies();

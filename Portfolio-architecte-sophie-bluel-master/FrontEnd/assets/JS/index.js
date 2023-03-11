@@ -221,9 +221,7 @@ form.addEventListener("submit", (e) => {
     formData.append("category", categoryInput.value);
     const file = fileInput.files[0];
     const maxSize = 4 * 1024 * 1024; // 4mb
-    //test si image présente puis si taille inferieur a 4mo
-    //test si titre non vide ("")
-    // si faux, faire un return
+  
 
     if (file.size > maxSize) {
         alert(`Image trop volumineuse, veuillez insérer un fichier inferieur à 4Mo.`);
