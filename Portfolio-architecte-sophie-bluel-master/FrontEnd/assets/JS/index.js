@@ -39,7 +39,6 @@ function openpopup() {
 
 //---- fetch pour supprimer les projets ----
 function supprimer_proj(id_proj) {
-    //console.log(id_proj);
     fetch(serv + "api/works/" + id_proj, {
         method: "DELETE",
         headers: {
@@ -51,7 +50,6 @@ function supprimer_proj(id_proj) {
         if (r.status == 204) {
             for (var z = 0; z < gid("gallery").childNodes.length; z++) {
                 if (gid("gallery").childNodes[z].dataset.id == id_proj) {
-                    // surpimer elemDom.childNodes[z]
                     gid("gallery").removeChild(gid("gallery").childNodes[z]);
                 }
             }
@@ -81,7 +79,7 @@ function setAdminElement() {
     }
 }
 
-//---- fetch request -----
+//---- fetch request pour avoir récuperer les works -----
 async function getAllWorks() {
     const response = await fetch("http://localhost:5678/api/works");
     if (response.ok) {
@@ -91,10 +89,12 @@ async function getAllWorks() {
     }
 }
 
+//---- recuperations des works pour les mettres dans les catégories ----
 async function init() {
     allWork = await getAllWorks();
     initiateWorksSet();
 }
+
 //--- triage des works ---//
 function initiateWorksSet() {
     objWork = [];
@@ -116,6 +116,7 @@ function initiateWorksSet() {
     displayImages(allWork);
     displayModal(allWork);
 }
+
 //---- Affichage Image -----
 function displayImages(works) {
     console.log(works);
@@ -152,7 +153,6 @@ function displayModal(works) {
     manager.appendChild(modalFragment);
 }
 
-console.log(displayModal);
 
 //--- vider la gallery ------
 function clearGallery() {
@@ -160,12 +160,15 @@ function clearGallery() {
         gallery.removeChild(gallery.lastChild);
     }
 }
+
+//---- vider la gallery modale ----
 function clearModale() {
     while (manager.firstChild) {
         manager.removeChild(manager.lastChild);
     }
 }
 
+//---- afficher et clear les catégories pour les trier ----
 function listenCategories() {
     const buttons = document.querySelectorAll("#categories div");
     for (const button of buttons) {
@@ -192,7 +195,7 @@ setAdminElement();
 init();
 listenCategories();
 
-//---- afficher preview de l'upload image sur la pop-up ----
+//---- afficher preview de  l'image sur la pop-up ----
 function readURL(input) {
     if (input.files && input.files[0]) {
         var reader = new FileReader();
@@ -205,7 +208,7 @@ function readURL(input) {
     }
 }
 
-//---- construction du form pour upload une image vers le serv ----
+//---- construction du formData pour upload une image vers le serv ----
 const form = document.querySelector("#workform");
 let fileInput = gid("image");
 let titreInput = gid("titre");
@@ -222,7 +225,7 @@ form.addEventListener("submit", (e) => {
     const file = fileInput.files[0];
     const maxSize = 4 * 1024 * 1024; // 4mb
   
-
+    //---- Vérification de la taille de l'image ----
     if (file.size > maxSize) {
         alert(`Image trop volumineuse, veuillez insérer un fichier inferieur à 4Mo.`);
         fileInput.value = "";

@@ -1,3 +1,5 @@
+
+//---- envoie de la connection et gérance des erreur ----
 gid("connection").addEventListener("click", function (e) {
   fetch(serv + "api/users/login", {
     mode: "cors",

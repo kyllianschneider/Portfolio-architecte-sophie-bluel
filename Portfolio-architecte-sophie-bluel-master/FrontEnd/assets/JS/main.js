@@ -14,6 +14,7 @@ function auth() {
     return false;
 }
 
+//---- récuperation du cookie ----
 function getCookie(cname) {
     var name = cname + "=";
     var ca = document.cookie.split(";");
@@ -25,6 +26,7 @@ function getCookie(cname) {
     return "";
 }
 
+//---- création du cookie ----
 function setCookie(cname, cvalue, exdays) {
     var d = new Date();
     d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
@@ -33,6 +35,7 @@ function setCookie(cname, cvalue, exdays) {
         cname + "=" + cvalue + "; " + expires + ";SameSite=None; Secure";
 }
 
+//---- suppression du cookie ----
 function deleteAllCookies() {
     var cookies = document.cookie.split(";");
     for (var i = 0; i < cookies.length; i++) {

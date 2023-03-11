@@ -103,7 +103,7 @@
     </nav>
   </footer>
 
-
+<!-- premiere pop up -->
   <div id="mypopup" hidden>
     <div onclick="closepopup();">
       <img src="./assets/icons/VectorclosePopUp.svg" alt="">
@@ -115,7 +115,7 @@
   </div>
 
 
-
+<!-- deuxieme pop up -->
   <div id="mypopup2" hidden>
     <div class="back" onclick="back();">
       <img src="./assets/icons/BackArrow.svg" alt="">
@@ -124,17 +124,19 @@
       <img src="./assets/icons/VectorclosePopUp.svg" alt="">
     </div>
     <H2>Ajout photo</H2>
+
+    <!-- creation du formulaire -->
     <form action="" class="workform" id="workform">
       <div class="add-pic">
         <img src="./assets/icons/image-icon.svg" alt="">
         <div class="photo">
-          <input id="image" type="file" name="image" accept="image/jpeg, image/png" required onchange="readURL(this);" hidden />
+          <input id="image" type="file" name="image" accept="image/jpeg, image/png" required onchange="readURL(this);"
+            hidden />
           <img id="preview" src="" alt="" />
           <label for="image" id="upload-style">+ Ajouter photo</label>
         </div>
         <p>jpg, png : 4mo max</p>
       </div>
-
       <div class="titre">
         <label for="titre"><b>Titre</b></label>
         <input id="titre" type="text" name="titre" required size="50" />
