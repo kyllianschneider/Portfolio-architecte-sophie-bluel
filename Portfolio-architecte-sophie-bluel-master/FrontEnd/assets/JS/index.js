@@ -1,13 +1,11 @@
 //-- set global variable ---
-const allWork = new Set();
-const objWork = new Set();
-const apptWork = new Set();
-const hotelWork = new Set();
+var allWork = [];
+var objWork = [];
+var apptWork = [];
+var hotelWork = [];
 
 const gallery = document.querySelector("#gallery");
 const manager = document.querySelector("#manager");
-
-console.log(manager);
 
 mypop = new popup("mypopup");
 mypop2 = new popup("mypopup2");
@@ -20,6 +18,8 @@ function nextpop() {
 function back() {
     mypop2.close();
     document.getElementById("preview").removeAttribute("src");
+    fileInput.value = "";
+    titreInput.value = "";
     mypop.pop();
 }
 
@@ -50,13 +50,11 @@ function supprimer_proj(id_proj) {
         console.log(r);
         if (r.status == 204) {
             for (var z = 0; z < gid("gallery").childNodes.length; z++) {
-                if (gid("gallery").childNodes[z].getAttribute("proj_id") == id_proj) {
-       // surpimer elemDom.childNodes[z]
-       gid("gallery").removeChild(gid("gallery").childNodes[z]) 
-    }
-    
-    }
-
+                if (gid("gallery").childNodes[z].dataset.id == id_proj) {
+                    // surpimer elemDom.childNodes[z]
+                    gid("gallery").removeChild(gid("gallery").childNodes[z]);
+                }
+            }
         } else if (r.status == 404) {
         } else {
         }
@@ -93,36 +91,41 @@ async function getAllWorks() {
     }
 }
 
+async function init() {
+    allWork = await getAllWorks();
+    initiateWorksSet();
+}
 //--- triage des works ---//
-async function initiateWorksSet() {
-    const works = await getAllWorks();
-    works.forEach((work) => {
+function initiateWorksSet() {
+    objWork = [];
+    apptWork = [];
+    hotelWork = [];
+
+    for (const work of allWork) {
         if (work.categoryId == 1) {
-            objWork.add(work);
+            objWork.push(work);
         }
         if (work.categoryId == 2) {
-            apptWork.add(work);
+            apptWork.push(work);
         }
         if (work.categoryId == 3) {
-            hotelWork.add(work);
+            hotelWork.push(work);
         }
-        allWork.add(work);
-    });
+    }
+
     displayImages(allWork);
     displayModal(allWork);
 }
-
 //---- Affichage Image -----
-async function displayImages(works) {
+function displayImages(works) {
+    console.log(works);
     const imgFragment = document.createDocumentFragment();
     for (const work of works) {
         const figure = document.createElement("figure");
-        figure.dataset.cat = work.categoryId;
         figure.innerHTML = `<img src="${work.imageUrl}" alt="${work.title}" crossorigin="anonymous">
             <figcaption>${work.title}</figcaption>`;
-            figure.setAttribute("proj_id", work.id);
-            imgFragment.appendChild(figure);
-
+        figure.dataset.id = work.id;
+        imgFragment.appendChild(figure);
     }
     gallery.appendChild(imgFragment);
 }
@@ -132,17 +135,15 @@ function displayModal(works) {
     const modalFragment = document.createDocumentFragment();
     for (const work of works) {
         const figure = document.createElement("figure");
-        figure.dataset.cat = work.categoryId;
         figure.innerHTML = `<img src="${work.imageUrl}" alt="${work.title}" crossorigin="anonymous">
             <figcaption>${work.title}</figcaption>`;
 
         button = document.createElement("div");
-        button.style.backgroundImage =
-            "url('./assets/icons/trash-can-solid.svg')";
+        button.style.backgroundImage = "url('./assets/icons/trash-can-solid.svg')";
         button.className = "supp";
-        button.setAttribute("proj_id", work.id);
+        button.dataset.id = work.id;
         button.addEventListener("click", function (e) {
-            supprimer_proj(e.target.getAttribute("proj_id"));
+            supprimer_proj(e.target.dataset.id);
             e.target.parentNode.style = "display: none;";
         });
         figure.appendChild(button);
@@ -155,7 +156,14 @@ console.log(displayModal);
 
 //--- vider la gallery ------
 function clearGallery() {
-    gallery.innerHTML = "";
+    while (gallery.firstChild) {
+        gallery.removeChild(gallery.lastChild);
+    }
+}
+function clearModale() {
+    while (manager.firstChild) {
+        manager.removeChild(manager.lastChild);
+    }
 }
 
 function listenCategories() {
@@ -181,7 +189,7 @@ function listenCategories() {
 }
 
 setAdminElement();
-initiateWorksSet();
+init();
 listenCategories();
 
 //---- afficher preview de l'upload image sur la pop-up ----
@@ -211,6 +219,18 @@ form.addEventListener("submit", (e) => {
     formData.append("image", fileInput.files[0]);
     formData.append("title", titreInput.value);
     formData.append("category", categoryInput.value);
+    const file = fileInput.files[0];
+    const maxSize = 4 * 1024 * 1024; // 4mb
+    //test si image présente puis si taille inferieur a 4mo
+    //test si titre non vide ("")
+    // si faux, faire un return
+
+    if (file.size > maxSize) {
+        alert(`Image trop volumineuse, veuillez insérer un fichier inferieur à 4Mo.`);
+        fileInput.value = "";
+        return;
+    }
+
     fetch(serv + "api/works", {
         method: "POST",
         headers: {
@@ -218,9 +238,13 @@ form.addEventListener("submit", (e) => {
         },
         body: formData,
     })
-        .then((response) => {
-            console.log(response);
-            // Handle the response
+        .then((r) => r.json())
+        .then((data) => {
+            allWork.push(data);
+            clearGallery();
+            clearModale();
+            initiateWorksSet();
+            back();
         })
         .catch((error) => {
             // Handle errors
