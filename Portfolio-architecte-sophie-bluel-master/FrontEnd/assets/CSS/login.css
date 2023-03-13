@@ -235,7 +235,8 @@ li:hover {
   border: white;
   height: 45px;
 }
-button {
+#connection {
+  margin-left: 60px;
   margin-top: 30px;
   font-family: "Syne";
   font-weight: 700;
